@@ -3,11 +3,17 @@ package com.example.myapplication
 import android.app.Application
 import com.example.myapplication.DI.DaggerMainComponent
 import com.example.myapplication.DI.MainComponent
+import com.example.myapplication.DI.ptovider.MainComponentProvider
 
-class MyApp: Application() {
-    lateinit var mainComponent: MainComponent
+class MyApp: Application(), MainComponentProvider {
+
+
     override fun onCreate() {
         super.onCreate()
-        mainComponent = DaggerMainComponent.builder().build()
+
+    }
+
+    override fun getMainComponent(): MainComponent {
+    return DaggerMainComponent.builder().build()
     }
 }
