@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.core.Cat
 import com.example.myapplication.DI.MainComponent
+import com.example.myapplication.DI.ptovider.MainComponentProvider
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(){
@@ -13,7 +14,7 @@ class MainActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        mainComponent = (application as MyApp).getMainComponent()
+        mainComponent = (application as MainComponentProvider).getMainComponent()
         mainComponent.inject(this)
         println(cat)
     }
